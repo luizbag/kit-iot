@@ -12,7 +12,7 @@ mongoAdapter.connect("mongodb://localhost/kit-iot", function(err){
 });
 
 var routes = require('./routes/index');
-var sensores = require('./routes/sensores.js');
+var sensores = require('./routes/sensores');
 var users = require('./routes/users');
 
 var app = express();
