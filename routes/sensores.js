@@ -6,13 +6,38 @@ var collection = "sensores";
 
 router.get("/", function(req, res, next) {
 	mongoAdapter.findDocuments(collection, {}, function(err, docs) {
-		res.render("sensores/index", {sensores: docs});
+		res.render("sensores/index", {title: "Sensores", sensores: docs});
 	});
 });
 
 router.get("/:id", function(req, res, next) {
 	mongoAdapter.findDocument(collection, {id: req.params.id}, function(err, doc) {
-		res.render("sensores/show", {sensor: doc});
+		if(err) console.log(err);
+		else res.render("sensores/show", {title: doc.nome, sensor: doc});
+	});
+});
+
+router.post("/", function(req, res, next) {
+	mongoAdapter.insertDocument(collection, req.body, function(err, result) {
+		if(err) console.log(err);
+		else res.json(result);
+	});
+});
+
+router.post("/:id", function(req, res, next) {
+	req.body.data_hora = new Date().getTime()/1000;
+	mongoAdapter.findDocument(collection, {id: req.params.id}, function(err, doc) {
+		if(err) console.log(err);
+		else {
+			if(!doc.leituras) {
+				doc.leituras = [];
+			}
+			doc.leituras.push(req.body);
+			mongoAdapter.updateDocument(collection, {id: req.params.id}, doc, function(err, results) {
+				if(err) console.log(err);
+				else res.json(results);
+			});
+		}
 	});
 });
 

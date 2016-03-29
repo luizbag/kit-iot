@@ -6,7 +6,7 @@ var mongoAdapter = {};
 mongoAdapter.connect = function(url, cb) {
 	MongoClient.connect(url, function(err, db) {
 		if(err) cb(err);
-		else { 
+		else {
 			mongoAdapter.db = db;
 			cb(undefined);
 		}
@@ -21,6 +21,13 @@ mongoAdapter.insertDocuments = function(col, documents, cb) {
 	});
 };
 
+mongoAdapter.insertDocument = function(col, document, cb) {
+	var collection = mongoAdapter.db.collection(col);
+	collection.insertOne(document, function(err, result) {
+		if(err) cb(err);
+		else cb(undefined, result);
+	});
+};
 
 mongoAdapter.findDocuments = function(col, query, cb) {
 	var collection = mongoAdapter.db.collection(col);
@@ -37,5 +44,12 @@ mongoAdapter.findDocument = function(col, query, cb) {
 		else cb(undefined, doc);
 	});
 }
+
+mongoAdapter.updateDocument = function(col, query, doc, cb) {
+   mongoAdapter.db.collection(col).updateOne(query, doc, function(err, results) {
+   		if(err) cb(err);
+   		else cb(undefined, results);
+   });
+};
 
 module.exports = mongoAdapter;

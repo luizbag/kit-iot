@@ -2,3 +2,12 @@ extends ../layout
 
 block content
 	h1= sensor.nome
+	table
+		tr
+			td Temperatura
+			td Umidade
+			td Data
+		each leitura in sensor.leituras
+			tr
+				each atr in leitura
+					td= atr
