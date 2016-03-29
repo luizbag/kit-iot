@@ -15,12 +15,17 @@ mongoAdapter.connect("mongodb://localhost/kit-iot", function(err){
 var routes = require('./routes/index');
 var sensores = require('./routes/sensores');
 var users = require('./routes/users');
+var rootUrl = process.env.ROOT_URL_KIT_IOT || "http://localhost:3000/";
 
 var app = express();
 
 app.locals.format_date = function(miliseconds) {
   return moment(miliseconds).format('DD/MM/YYYY HH:mm:ss');
 };
+
+app.locals.absolute_url = function(relative_path) {
+  return rootUrl + relative_path;
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

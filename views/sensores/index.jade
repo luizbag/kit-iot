@@ -2,8 +2,7 @@ extends ../layout
 
 block content
 	h1 Sensores
-	p= base
 	ul
 		each sensor in sensores
 			li
-				a(href=sensor.id)=sensor.nome
+				a(href=absolute_url("sensores/"+sensor.id))=sensor.nome
