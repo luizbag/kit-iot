@@ -4,8 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoAdapter = require('./db');
+
+mongoAdapter.connect("mongodb://localhost/kit-iot", function(err){
+  if(err) console.log(err);
+  else console.log("sucesso");
+});
 
 var routes = require('./routes/index');
+var sensores = require('./routes/sensores.js');
 var users = require('./routes/users');
 
 var app = express();
@@ -24,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/sensores', sensores);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
