@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoAdapter = require('./db');
+var moment = require('moment');
 
 mongoAdapter.connect("mongodb://localhost/kit-iot", function(err){
   if(err) console.log(err);
@@ -16,6 +17,10 @@ var sensores = require('./routes/sensores');
 var users = require('./routes/users');
 
 var app = express();
+
+app.locals.format_date = function(miliseconds) {
+  return moment(miliseconds).format('DD/MM/YYYY HH:mm:ss');
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

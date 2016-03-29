@@ -25,7 +25,7 @@ router.post("/", function(req, res, next) {
 });
 
 router.post("/:id", function(req, res, next) {
-	req.body.data_hora = new Date().getTime()/1000;
+	req.body.data_hora = new Date().getTime();
 	mongoAdapter.findDocument(collection, {id: req.params.id}, function(err, doc) {
 		if(err) console.log(err);
 		else {
