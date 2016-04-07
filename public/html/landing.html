@@ -1,0 +1,34 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="home">Kit IoT</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse" ng-controller="LoginController">
+      <form class="navbar-form navbar-right" ng-submit="login(email, senha)">
+        <div class="form-group">
+          <input type="text" placeholder="Email" ng-model="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Senha" ng-model="senha" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Entrar</button>
+      </form>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Kit IoT</h1>
+    <p><a ng-sref="cadastrar" class="btn btn-lg btn-primary">Cadastre-se</a></p>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; <a href="http://www.facens.br">FACENS</a> 2016</p>
+</footer>
