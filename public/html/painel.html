@@ -18,44 +18,9 @@
     </div><!--/.navbar-collapse -->
   </div>
 </nav>
-<div id="wrapper">
-
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper" ng-controller='CadernoController'>
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a href="">
-          Cadernos
-        </a>
-      </li>
-      <li ng-repeat="caderno in cadernos">
-        <a href="" ng-click="selectCaderno(caderno)">{{caderno.nome}}</a>
-      </li>
-      <li>
-        <a href="" ng-click="novoCaderno()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Caderno</a>
-      </li>
-    </ul>
-  </div>
-  <!-- /#sidebar-wrapper -->
-
-  <!-- Page Content -->
-  <div id="page-content-wrapper">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <div ui-view></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /#page-content-wrapper -->
-
+<div ng-controller="TabsController as tabsCtrl">
+<ul class="nav nav-tabs">
+  <li role="presentation" ng-class="{active: tabsCtrl.isActive(1)}"><a ng-click="tabsCtrl.select(1)">Painel</a></li>
+  <li role="presentation" ng-class="{active: tabsCtrl.isActive(2)}"><a ng-click="tabsCtrl.select(2)">Sensores</a></li>
+</ul>
 </div>
-<!-- /#wrapper -->
-<!-- Menu Toggle Script -->
-<script>
-$("#menu-toggle").click(function(e) {
-  e.preventDefault();
-  $("#wrapper").toggleClass("toggled");
-});
-</script>
