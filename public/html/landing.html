@@ -9,8 +9,8 @@
       </button>
       <a class="navbar-brand" ui-sref="home">Kit IoT</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse" ng-controller="LoginController">
-      <form class="navbar-form navbar-right" ng-submit="login(email, senha)">
+    <div id="navbar" class="navbar-collapse collapse" ng-controller="LoginController as loginCtrl">
+      <form class="navbar-form navbar-right" ng-submit="loginCtrl.login(email, senha)">
         <div class="form-group">
           <input type="text" placeholder="Email" ng-model="email" class="form-control">
         </div>
@@ -22,10 +22,10 @@
     </div><!--/.navbar-collapse -->
   </div>
 </nav>
-<div class="jumbotron">
+<div class="jumbotron" style="margin: 20px">
   <div class="container">
     <h1>Kit IoT</h1>
-    <p><a ng-sref="cadastrar" class="btn btn-lg btn-primary">Cadastre-se</a></p>
+    <p><a href="#/cadastrar" class="btn btn-lg btn-primary">Cadastre-se</a></p>
   </div>
 </div>
 

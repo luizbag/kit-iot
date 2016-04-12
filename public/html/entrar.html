@@ -1,0 +1,34 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="home">Kit IoT</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-2 column">
+    </div>
+    <div class="col-md-8 column">
+      <h1>Entrar</h1>
+      <form ng-submit="login(email, password)">
+        <div class="form-group">
+          <input type="text" class="form-control" ng-model="email" name="email" id="email" placeholder="Email" />
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" ng-model="password" name="password" id="password" placeholder="Senha" />
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit">Entrar</button>
+      </form>
+      <p>{{ error }}</p>
+    </div>
+    <div class="col-md-2 column">
+    </div>
+  </div>
+</div>
