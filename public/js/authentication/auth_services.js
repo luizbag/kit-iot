@@ -36,7 +36,7 @@ angular.module('app')
   })
   .service('LoginService', ['$http', function($http) {
     this.login = function(email, password, callback) {
-      $http.post('/login', {"email": email, "password": password}).
+      $http.post('/users/login', {"email": email, "password": password}).
         success(function(data, status, headers, config) {
           callback(data);
         }).
@@ -47,7 +47,7 @@ angular.module('app')
     };
 
     this.register = function(email, password, callback) {
-      $http.post('/login/register', {"email": email, "password": password}).
+      $http.post('/users/register', {"email": email, "password": password}).
         success(function(data, status, headers, config) {
           callback(data);
         }).

@@ -12,7 +12,10 @@ router.post('/login', function(req, res, next) {
 		if(user) {
 			user.comparePassword(req.body.password, function(match) {
 				if(match) {
-					var token = jwt.sign(user, config.secret);
+					var u = {};
+					u._id = user._id;
+					u.email = user.email;
+					var token = jwt.sign(u, config.secret, {noTimestamp: true});
 					res.json(token);
 				} else {
 					console.log("Attempt failed to login with " + user.email);
@@ -27,7 +30,10 @@ router.post('/login', function(req, res, next) {
 
 router.post('/register', function(req, res, next) {
 	User.create(req.body, function(err, user) {
-		if(err) return next(err);
+		if(err) {
+			console.log(err);
+			return next(err);
+		}
 		res.json(user);
 	});
 });

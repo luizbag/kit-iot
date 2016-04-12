@@ -7,11 +7,19 @@ angular.module('app', ['ngRoute', 'ngResource'])
 		})
 		.when('/entrar', {
 			templateUrl: 'html/entrar.html',
+			controller: 'LoginController',
+			controllerAs: 'loginCtrl',
 			requireLogin: false
 		})
 		.when('/cadastrar', {
 			templateUrl: 'html/cadastrar.html',
+			controller: 'LoginController',
+			controllerAs: 'loginCtrl',
 			requireLogin: false
+		})
+		.when('/painel', {
+			templateUrl: 'html/painel.html',
+			requireLogin: true
 		})
 		.otherwise({
 			redirectTo: '/landing'

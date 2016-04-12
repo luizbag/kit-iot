@@ -42,14 +42,12 @@ router.delete('/:id', function(req, res, next) {
 });
 
 router.post('/:id', function(req, res, next) {
-	console.log(req.body);
 	req.body.data_hora = new Date().getTime();
 	Sensor.findByIdAndUpdate(req.params.id,
 		{$push: {leituras: req.body}},
 		{safe: true, upsert: true, new: true},
 		function(err, sensor) {
 			if(err) return next(err);
-			console.log(sensor);
 			res.json(sensor);
 		});
 });

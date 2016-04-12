@@ -8,7 +8,7 @@ var check_token = function(req, res, next) {
 			if(err) {
 				return res.sendStatus(401);
 			} else {
-				req.user = decoded._doc;
+				req.user = decoded;
 				next();
 			}
 		});
