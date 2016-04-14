@@ -43,7 +43,9 @@ router.use(check_token);
 router.get('/', function(req, res, next) {
 	User.findById(req.user._id, function(err, user) {
 		if(err) return next(err);
-		res.json(user);
+		users = [];
+		users.push(user);
+		res.json(users);
 	});
 });
 
