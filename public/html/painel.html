@@ -18,9 +18,17 @@
     </div><!--/.navbar-collapse -->
   </div>
 </nav>
-<div ng-controller="TabsController as tabsCtrl">
-<ul class="nav nav-tabs">
-  <li role="presentation" ng-class="{active: tabsCtrl.isActive(1)}"><a ng-click="tabsCtrl.select(1)">Painel</a></li>
-  <li role="presentation" ng-class="{active: tabsCtrl.isActive(2)}"><a ng-click="tabsCtrl.select(2)">Sensores</a></li>
-</ul>
+<div ng-controller="SensorsController as sensorCtrl">
+  <div ng-controller="TabsController as tabsCtrl">
+    <ul class="nav nav-tabs">
+      <li role="presentation" ng-class="{active: tabsCtrl.isActive(0)}"><a ng-click="tabsCtrl.select(0)">Painel</a></li>
+      <li role="presentation" ng-repeat="sensor in sensorCtrl.sensores" ng-class="{active: tabsCtrl.isActive(sensor._id)}"><a ng-click="tabsCtrl.select(sensor._id)">{{sensor.nome}}</a></li>
+    </ul>
+    <div ng-show="tabsCtrl.isActive(0)">
+      <h3>Painel</h3>
+    </div>
+    <div ng-repeat="sensor in sensorCtrl.sensores"ng-show="tabsCtrl.isActive(sensor._id)">
+      <h3>{{ sensor.nome }}</h3>
+    </div>
+  </div>
 </div>

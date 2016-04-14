@@ -1,5 +1,6 @@
 angular.module('app', ['ngRoute', 'ngResource'])
-	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+	.config(['$routeProvider', '$locationProvider', '$httpProvider',
+		function($routeProvider, $locationProvider, $httpProvider) {
 		$routeProvider
 		.when('/landing', {
 			templateUrl: 'html/landing.html',
@@ -24,7 +25,7 @@ angular.module('app', ['ngRoute', 'ngResource'])
 		.otherwise({
 			redirectTo: '/landing'
 		});
-
+		$httpProvider.interceptors.push('AuthInterceptor');
 		//$locationProvider.html5Mode(true);
 	}])
 	.run(function($rootScope, $location, AuthToken) {
