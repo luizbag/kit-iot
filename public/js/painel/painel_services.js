@@ -1,7 +1,7 @@
 angular.module('app')
 .factory('Sensor', ['$resource', function($resource) {
-	return $resource('/sensores/:id');
+	return $resource('sensores/:id');
 }])
 .factory('User', ['$resource', function($resource) {
-	return $resource('/users/:id');
+	return $resource('users/:id');
 }]);
