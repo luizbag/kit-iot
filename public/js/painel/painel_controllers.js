@@ -13,15 +13,29 @@ angular.module('app')
 }])
 .controller('SensorsController', ['Sensor', function(Sensor) {
 	var ctrl = this;
-	this.sensores = Sensor.query();
+	
+	var init = function() {
+		Sensor.query().$promise.then(function(data) {
+			data.forEach(function(sensor) {
+				sensor.colunas = [];
+				for(var k in sensor.leituras[0]) {
+					sensor.colunas.push(k);
+				}
+			});
+			console.log(data);
+			ctrl.sensores = data;
+		});
+	};
 
 	this.addSensor = function(nome) {
 		var sensor = {};
 		sensor.nome = nome;
 		Sensor.save(sensor, function(sensor) {
-			ctrl.sensores = Sensor.query();
+			init();
 		});
 	};
+
+	init();
 }])
 .controller('UserController', ['User', function(User) {
 	var ctrl = this;

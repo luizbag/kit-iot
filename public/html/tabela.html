@@ -2,17 +2,16 @@
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
-	<td>Temperatura</td>
-	<td>Umidade</td>
-	<td>Data/Hora</td>
+        <td ng-repeat="c in colunas"><capitalize text="c"></capitalize></td>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="l in leituras">
-	<td>{{ l.temperatura }}</td>
-	<td>{{ l.umidade }}</td>
-	<td><format-date data_hora="l.data_hora"></format-date></td>
-      </tr>
-    </tbody>
-  </table>
+       <td ng-repeat="c in colunas">
+        <span ng-if="$last"><format-date miliseconds="l[c]"></format-date></span>
+        <span ng-if="!$last">{{ l[c] }}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
 </div>
