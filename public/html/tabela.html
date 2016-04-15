@@ -1,13 +1,18 @@
 <div class="table-responsive">
-	<table class="table table-hover table-bordered">
-		<thead>
-			<tr>
-				<td>Temperatura</td>
-				<td>Umidade</td>
-				<td>Data/Hora</td>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+	<td>Temperatura</td>
+	<td>Umidade</td>
+	<td>Data/Hora</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="l in leituras">
+	<td>{{ l.temperatura }}</td>
+	<td>{{ l.umidade }}</td>
+	<td><format-date data_hora="l.data_hora"></format-date></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
