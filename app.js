@@ -21,10 +21,6 @@ var rootUrl = process.env.ROOT_URL_KIT_IOT || "http://localhost:3000/";
 
 var app = express();
 
-app.locals.format_date = function(miliseconds) {
-  return moment(miliseconds).format('DD/MM/YYYY HH:mm:ss');
-};
-
 app.locals.absolute_url = function(relative_path) {
   return rootUrl + relative_path;
 }

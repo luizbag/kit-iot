@@ -12,10 +12,21 @@ angular.module('app')
 	return {
 	    restrict: 'E',
 	    scope: {
-		data_hora: '=data_hora'
+		miliseconds: '=data_hora'
 	    },
 	    link: function(scope, element, attrs) {
-		element.text(moment(scope.data_hora).format('DD/MM/YYYY HH:mm:ss'))
+		element.text(moment(scope.miliseconds).format('DD/MM/YYYY HH:mm:ss'));
+	    }
+	};
+    })
+    .directive('capitalize', function() {
+	return {
+	    restrict: 'E',
+	    scope: {
+		text: '=text'
+	    },
+	    link: function(scope, element, attrs) {
+		element.text(scope.text.charAt(0).toUpperCase() + scope.text.slice(1));
 	    }
 	};
     });
