@@ -27,6 +27,8 @@ angular.module('app')
 			text: '=text'
 		},
 		link: function(scope, element, attrs) {
+			console.log(scope.text);
+			scope.text = scope.text.replace("_", "/");
 			element.text(scope.text.charAt(0).toUpperCase() + scope.text.slice(1));
 		}
 	};

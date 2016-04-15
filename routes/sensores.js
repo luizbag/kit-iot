@@ -20,11 +20,15 @@ router.get('/:id', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
 	var sensor = new Sensor(req.body);
-	sensor.user = req.user._id;
-	Sensor.create(sensor, function(err, sensor) {
-		if(err) return next(err);
-		res.json(sensor);
-	});
+	if(sensor.nome) {
+		sensor.user = req.user._id;
+		Sensor.create(sensor, function(err, sensor) {
+			if(err) return next(err);
+			res.json(sensor);
+		});
+	} else {
+		res.sendStatus(406);
+	}
 });
 
 router.put('/:id', function(req, res, next) {

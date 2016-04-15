@@ -22,17 +22,19 @@ angular.module('app')
 					sensor.colunas.push(k);
 				}
 			});
-			console.log(data);
 			ctrl.sensores = data;
 		});
 	};
 
 	this.addSensor = function(nome) {
-		var sensor = {};
-		sensor.nome = nome;
-		Sensor.save(sensor, function(sensor) {
-			init();
-		});
+		console.log(nome);
+		if(nome) {
+			var sensor = {};
+			sensor.nome = nome;
+			Sensor.save(sensor, function(sensor) {
+				init();
+			});
+		}
 	};
 
 	init();
