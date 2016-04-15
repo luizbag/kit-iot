@@ -1,5 +1,25 @@
-extends layout
-
-block content
-	h1= title
-	p Welcome to #{title}
+doctype html
+html(ng-app="app", lang="pt-br")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		title Kit-Iot Smartcampus FACENS
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+		link(type="text/css", rel="stylesheet", href=absolute_url("css/style.css"))
+	body
+		div(ng-view)
+		script(src="https://code.jquery.com/jquery-2.2.3.min.js",
+		integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+		crossorigin="anonymous")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-resource.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js")
+		script(src=absolute_url("js/app.js"))
+		script(src=absolute_url("js/authentication/auth_services.js"))
+		script(src=absolute_url("js/authentication/auth_controllers.js"))
+		script(src=absolute_url("js/painel/painel_services.js"))
+		script(src=absolute_url("js/painel/painel_controllers.js"))
+		script(src=absolute_url("js/painel/painel_directives.js"))

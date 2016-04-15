@@ -1,8 +1,0 @@
-extends ../layout
-
-block content
-	h1 Sensores
-	ul
-		each sensor in sensores
-			li
-				a(href=absolute_url("sensores/"+sensor.id))=sensor.nome
