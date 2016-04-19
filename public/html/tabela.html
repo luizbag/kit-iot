@@ -6,7 +6,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="l in leituras">
+      <tr ng-repeat="l in leituras | orderBy:'-data_hora'">
        <td ng-repeat="c in colunas">
         <span ng-if="$last"><format-date miliseconds="l[c]"></format-date></span>
         <span ng-if="!$last">{{ l[c] }}</span>

@@ -13,9 +13,10 @@ angular.module('app')
 	return {
 		restrict: 'E',
 		scope: {
-			miliseconds: '=data_hora'
+			miliseconds: '=miliseconds'
 		},
 		link: function(scope, element, attrs) {
+		    console.log(scope.miliseconds);
 			element.text(moment(scope.miliseconds).format('DD/MM/YYYY HH:mm:ss'));
 		}
 	};
@@ -27,7 +28,6 @@ angular.module('app')
 			text: '=text'
 		},
 		link: function(scope, element, attrs) {
-			console.log(scope.text);
 			scope.text = scope.text.replace("_", "/");
 			element.text(scope.text.charAt(0).toUpperCase() + scope.text.slice(1));
 		}
