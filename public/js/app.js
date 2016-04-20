@@ -37,10 +37,10 @@ angular.module('app', ['ngRoute', 'ngResource'])
   });
 })
 .filter('slice', function() {
-  return function(list, page) {
+  return function(list, page, page_size) {
     if(list) {
-      var start = (page-1)*15;
-      var end = start + 15;
+      var start = (page-1)*page_size;
+      var end = start + page_size;
       return list.slice(start, end);
     } else {
       return [];

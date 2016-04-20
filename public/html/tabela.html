@@ -1,19 +1,21 @@
-<div class="table-responsive">
-  <table class="table table-hover table-bordered">
-    <thead>
-      <tr>
-        <td ng-repeat="c in colunas"><capitalize text="c"></capitalize></td>
+<div ng-show="leituras.length > 0">
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th ng-repeat="c in colunas"><capitalize text="c"></capitalize></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="l in leituras | slice: index:page_size">
+         <td ng-repeat="c in colunas">
+          <span ng-if="$last"><format-date miliseconds="l[c]"></format-date></span>
+          <span ng-if="!$last">{{ l[c] }}</span>
+        </td>
       </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="l in leituras | slice: index">
-       <td ng-repeat="c in colunas">
-        <span ng-if="$last"><format-date miliseconds="l[c]"></format-date></span>
-        <span ng-if="!$last">{{ l[c] }}</span>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 <center>
   <nav>
     <ul class="pagination">
@@ -31,4 +33,7 @@
     </ul>
   </nav>
 </center>
+</div>
+<div ng-hide="leituras.length > 0">
+  <p>Sem leituras</p>
 </div>
