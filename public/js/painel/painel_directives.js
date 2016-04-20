@@ -6,6 +6,28 @@ angular.module('app')
 			leituras: '=leituras',
 			colunas: '=colunas'
 		},
+		controller: function($scope) {
+			var n_pages = Math.ceil($scope.leituras.length/15);
+			$scope.leituras.sort(function(a, b) {
+				return b.data_hora - a.data_hora;
+			});
+			$scope.pages = [];
+			$scope.index = 1;
+			for(var i=1;i<=n_pages;i++) {
+				$scope.pages.push(i);
+			}
+
+			$scope.select = function(i) {
+				if(i>=1 && i<=n_pages) {
+					$scope.index = i;
+				}
+			};
+
+			$scope.isActive = function(i) {
+				return $scope.index === i;
+			};
+		},
+		controllerAs: 'ctrl',
 		templateUrl: 'html/tabela.html'
 	};
 })
@@ -16,7 +38,6 @@ angular.module('app')
 			miliseconds: '=miliseconds'
 		},
 		link: function(scope, element, attrs) {
-		    console.log(scope.miliseconds);
 			element.text(moment(scope.miliseconds).format('DD/MM/YYYY HH:mm:ss'));
 		}
 	};

@@ -11,10 +11,10 @@ angular.module('app')
 		tabs.active = index;
 	};
 }])
-.controller('SensorsController', ['Sensor', function(Sensor) {
+.controller('SensorsController', ['Sensor', '$timeout', function(Sensor, $timeout) {
 	var ctrl = this;
 	
-	var init = function() {
+	var load = function() {
 		Sensor.query().$promise.then(function(data) {
 			data.forEach(function(sensor) {
 				sensor.colunas = [];
@@ -24,6 +24,10 @@ angular.module('app')
 			});
 			ctrl.sensores = data;
 		});
+
+    $timeout(function() {
+      load();
+    }, 60000);
 	};
 
 	this.addSensor = function(nome) {
@@ -32,12 +36,12 @@ angular.module('app')
 			var sensor = {};
 			sensor.nome = nome;
 			Sensor.save(sensor, function(sensor) {
-				init();
+				load();
 			});
 		}
 	};
 
-	init();
+	load();
 }])
 .controller('UserController', ['User', function(User) {
 	var ctrl = this;
