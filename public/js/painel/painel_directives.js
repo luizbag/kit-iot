@@ -7,13 +7,14 @@ angular.module('app')
 			colunas: '=colunas'
 		},
 		controller: function($scope) {
-			$scope.page_size = 15;
+			$scope.page_size = 10;
 			var n_pages = Math.ceil($scope.leituras.length/$scope.page_size);
 			$scope.leituras.sort(function(a, b) {
 				return b.data_hora - a.data_hora;
 			});
 			$scope.pages = [];
 			$scope.index = 1;
+			
 			for(var i=1;i<=n_pages;i++) {
 				$scope.pages.push(i);
 			}

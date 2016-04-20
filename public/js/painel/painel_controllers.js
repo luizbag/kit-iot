@@ -27,7 +27,7 @@ angular.module('app')
 
     $timeout(function() {
       load();
-    }, 10000);
+    }, 300000);
 	};
 
 	this.addSensor = function(nome) {

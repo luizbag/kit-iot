@@ -1,4 +1,21 @@
 <div ng-show="leituras.length > 0">
+  <center>
+    <nav>
+      <ul class="pagination">
+        <li>
+          <a ng-click="select(index-1)" aria-label="Anterior">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li ng-repeat="i in pages" ng-class="{active: isActive(i)}"><a ng-click="select(i)">{{ i }}</a></li>
+        <li>
+          <a ng-click="select(index+1)" aria-label="Próximo">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </center>
   <div class="table-responsive">
     <table class="table table-hover table-bordered">
       <thead>
@@ -8,32 +25,16 @@
       </thead>
       <tbody>
         <tr ng-repeat="l in leituras | slice: index:page_size">
-         <td ng-repeat="c in colunas">
-          <span ng-if="$last"><format-date miliseconds="l[c]"></format-date></span>
-          <span ng-if="!$last">{{ l[c] }}</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <td ng-repeat="c in colunas">
+            <span ng-if="$last"><format-date miliseconds="l[c]"></format-date></span>
+            <span ng-if="!$last">{{ l[c] }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<center>
-  <nav>
-    <ul class="pagination">
-      <li>
-        <a ng-click="select(index-1)" aria-label="Anterior">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li ng-repeat="i in pages" ng-class="{active: isActive(i)}"><a ng-click="select(i)">{{ i }}</a></li>
-      <li>
-        <a ng-click="select(index+1)" aria-label="Próximo">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-</center>
-</div>
-<div ng-hide="leituras.length > 0">
-  <p>Sem leituras</p>
+<div ng-hide="leituras.length > 0" style="text-align: center;">
+  <h4>Não há nada aqui!</h4>
+  <p>Parece que ainda não recebemos nenhuma leitura desse sensor. Verifique se tudo está configurado corretamente.</p>
 </div>
