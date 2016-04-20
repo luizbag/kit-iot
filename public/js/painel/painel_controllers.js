@@ -31,7 +31,6 @@ angular.module('app')
 	};
 
 	this.addSensor = function(nome) {
-		console.log(nome);
 		if(nome) {
 			var sensor = {};
 			sensor.nome = nome;
@@ -39,6 +38,12 @@ angular.module('app')
 				load();
 			});
 		}
+	};
+
+	this.deleteSensor = function(id) {
+		Sensor.delete({id: id}, function() {
+			load();
+		});
 	};
 
 	load();
