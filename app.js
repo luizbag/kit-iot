@@ -8,10 +8,19 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 var config = require('./config');
 var check_token = require('./routes/token');
+var winston = require('winston');
+require('winston-mongodb').MongoDB;
+
+winston.add(winston.transports.MongoDB, {
+  db : config.database,
+  collection: 'logs'
+});
+
+winston.add(winston.transports.File, { filename: 'kit-iot.log' });
 
 mongoose.connect(config.database, function(err){
-  if(err) console.log(err);
-  else console.log("sucesso");
+  if(err) winston.error(err);
+  else winston.info("sucesso");
 });
 
 var routes = require('./routes/index');
