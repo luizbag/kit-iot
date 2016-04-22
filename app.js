@@ -13,7 +13,9 @@ require('winston-mongodb').MongoDB;
 
 winston.add(winston.transports.MongoDB, {
   db : config.database,
-  collection: 'logs'
+  collection: 'logs',
+  handleExceptions: true,
+  humanReadableUnhandledException: true
 });
 
 winston.add(winston.transports.File, { filename: 'kit-iot.log' });
